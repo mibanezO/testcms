@@ -1,0 +1,426 @@
+openapi: 3.0.0
+info:
+  title: CMS - Client Management
+  description: |-
+    Client Management System "CMS"
+
+  contact:
+    email: milagros.ibanez@pucp.pe
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: http://localhost:8080/api/v1
+tags:
+  - name: client
+    description: All about client management
+  - name: user
+    description: All about user management
+paths:
+  /clients:
+    post:
+      tags:
+        - client
+      summary: Adds a new client
+      description: Adds a new client
+      operationId: addClient
+      requestBody:
+        description: Adds a new client
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Client'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '400':
+          description: Invalid input
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          description: Validation exception
+      security:
+        - bearerAuth: []
+    get:
+      tags:
+        - client
+      summary: Lists clients
+      description: Lists clients
+      operationId: listClients
+      parameters:
+        - name: offset
+          in: query
+          description: Current page offset
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: limit
+          in: query
+          description: Current page limit
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: firstName
+          in: query
+          description: The user first name
+          required: false
+          schema:
+            type: string
+        - name: lastName
+          in: query
+          description: The user last name
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientPage'
+        '400':
+          description: Invalid input
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '422':
+          description: Validation exception
+      security:
+        - bearerAuth: []
+  /clients/{clientId}:
+    get:
+      tags:
+        - client
+      summary: Find client by ID
+      description: Returns a single client
+      operationId: getClientById
+      parameters:
+        - name: clientId
+          in: path
+          description: ID of client to return
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '400':
+          description: Invalid ID supplied
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Client not found
+      security:
+        - bearerAuth: []
+    patch:
+      tags:
+        - client
+      summary: Updates a client with form data
+      description: ''
+      operationId: updateClientWithForm
+      parameters:
+        - name: clientId
+          in: path
+          description: ID of client that needs to be updated
+          required: true
+          schema:
+            type: integer
+            format: int64
+        - name: firstName
+          in: query
+          description: First name of client that needs to be updated
+          schema:
+            type: string
+        - name: lastName
+          in: query
+          description: Last name of client that needs to be updated
+          schema:
+            type: string
+        - name: age
+          in: query
+          description: Age of client that needs to be updated
+          schema:
+            type: integer
+            format: int32
+        - name: birthDate
+          in: query
+          description: Birth date of client that needs to be updated
+          schema:
+            type: string
+            format: date
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '400':
+          description: Invalid input
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+      security:
+        - bearerAuth: []
+    put:
+      tags:
+        - client
+      summary: Update an existing client
+      description: Update an existing client by Id
+      operationId: updateClient
+      parameters:
+        - name: clientId
+          in: path
+          description: ID of client to update
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Update an existent client
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Client'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Client'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Client'
+        '400':
+          description: Invalid ID supplied
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '404':
+          description: Client not found
+        '422':
+          description: Validation exception
+      security:
+        - bearerAuth: []
+    delete:
+      tags:
+        - client
+      summary: Deletes a client
+      description: delete a client
+      operationId: deleteClient
+      parameters:
+        - name: clientId
+          in: path
+          description: Client ID to delete
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '400':
+          description: Invalid client value
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+      security:
+        - bearerAuth: []
+  /user/signin:
+    post:
+      tags:
+        - user
+      summary: Registers user into the system
+      description: ''
+      operationId: signInUser
+      requestBody:
+        description: Creates an user
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Invalid parameters
+        '422':
+          description: Validation exception
+  /user/login:
+    post:
+      tags:
+        - user
+      summary: Logs user into the system
+      description: ''
+      operationId: loginUser
+      parameters:
+        - name: username
+          in: query
+          description: The user name for login
+          required: false
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: The password for login in clear text
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          description: Invalid username/password supplied
+components:
+  schemas:
+    User:
+      required:
+        - email
+        - password
+        - role
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        username:
+          type: string
+          example: theUser
+        firstName:
+          type: string
+          example: John
+        lastName:
+          type: string
+          example: James
+        email:
+          type: string
+          example: john@email.com
+        password:
+          type: string
+          example: '12345'
+        phone:
+          type: string
+          example: '12345'
+        role:
+          type: string
+          enum:
+            - 'ROLE_USER'
+            - 'ROLE_ADMIN'
+        userStatus:
+          type: integer
+          description: User Status
+          format: int32
+          example: 1
+      xml:
+        name: user
+    Client:
+      required:
+        - firstName
+        - lastName
+        - age
+        - birthDate
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        firstName:
+          type: string
+        lastName:
+          type: string
+        age:
+          type: integer
+          format: int32
+        birthDate:
+          type: string
+          format: date
+      xml:
+        name: client
+    ClientPage:
+      type: object
+      properties:
+        count:
+          type: integer
+          format: int64
+        limit:
+          type: integer
+          format: int64
+        offset:
+          type: integer
+          format: int64
+        ageStats:
+          $ref: '#/components/schemas/ClientAgeStats'
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Client'
+    ClientAgeStats:
+      type: object
+      properties:
+        mean:
+          type: number
+        max:
+          type: number
+        min:
+          type: number
+        std:
+          type: number
+    TokenResponse:
+      type: object
+      properties:
+        authToken:
+          type: string
+      xml:
+        name: token
+  requestBodies:
+    Client:
+      description: Client object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Client'
+    UserArray:
+      description: List of user object
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+  responses:
+    UnauthorizedError:
+      description: Access token is missing or invalid
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
