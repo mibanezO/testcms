@@ -19,7 +19,7 @@ import jakarta.annotation.Generated;
  * User
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-04-01T23:04:49.901173-05:00[America/Lima]", comments = "Generator version: 7.8.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-04-02T16:08:41.447901-05:00[America/Lima]", comments = "Generator version: 7.8.0")
 public class User {
 
   private Long id;
@@ -177,7 +177,7 @@ public class User {
    * Get email
    * @return email
    */
-  @NotNull 
+  @NotNull @Size(min = 1) 
   @Schema(name = "email", example = "john@email.com", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("email")
   public String getEmail() {
@@ -197,7 +197,7 @@ public class User {
    * Get password
    * @return password
    */
-  @NotNull 
+  @NotNull @Size(min = 1) 
   @Schema(name = "password", example = "12345", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("password")
   public String getPassword() {

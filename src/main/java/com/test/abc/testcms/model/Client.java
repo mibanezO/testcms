@@ -20,7 +20,7 @@ import jakarta.annotation.Generated;
  * Client
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-04-01T23:04:49.901173-05:00[America/Lima]", comments = "Generator version: 7.8.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-04-02T16:08:41.447901-05:00[America/Lima]", comments = "Generator version: 7.8.0")
 public class Client {
 
   private Long id;
@@ -77,7 +77,7 @@ public class Client {
    * Get firstName
    * @return firstName
    */
-  @NotNull 
+  @NotNull @Size(min = 1) 
   @Schema(name = "firstName", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("firstName")
   public String getFirstName() {
@@ -97,7 +97,7 @@ public class Client {
    * Get lastName
    * @return lastName
    */
-  @NotNull 
+  @NotNull @Size(min = 1) 
   @Schema(name = "lastName", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("lastName")
   public String getLastName() {
@@ -115,9 +115,10 @@ public class Client {
 
   /**
    * Get age
+   * minimum: 0
    * @return age
    */
-  @NotNull 
+  @NotNull @Min(0) 
   @Schema(name = "age", requiredMode = Schema.RequiredMode.REQUIRED)
   @JsonProperty("age")
   public Integer getAge() {

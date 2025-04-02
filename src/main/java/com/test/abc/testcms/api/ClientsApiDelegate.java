@@ -21,7 +21,7 @@ import jakarta.annotation.Generated;
  * A delegate to be called by the {@link ClientsApiController}}.
  * Implement this interface with a {@link org.springframework.stereotype.Service} annotated class.
  */
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-04-01T23:04:49.901173-05:00[America/Lima]", comments = "Generator version: 7.8.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2025-04-02T16:08:41.447901-05:00[America/Lima]", comments = "Generator version: 7.8.0")
 public interface ClientsApiDelegate {
 
     default Optional<NativeWebRequest> getRequest() {
@@ -43,7 +43,7 @@ public interface ClientsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 3 }";
+                    String exampleString = "{ \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 0 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -82,7 +82,7 @@ public interface ClientsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 3 }";
+                    String exampleString = "{ \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 0 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -113,7 +113,7 @@ public interface ClientsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"offset\" : 1, \"ageStats\" : { \"std\" : 7.061401241503109, \"min\" : 2.3021358869347655, \"max\" : 5.637376656633329, \"mean\" : 5.962133916683182 }, \"count\" : 0, \"limit\" : 6, \"items\" : [ { \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 3 }, { \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 3 } ] }";
+                    String exampleString = "{ \"offset\" : 1, \"ageStats\" : { \"std\" : 7.061401241503109, \"min\" : 2.3021358869347655, \"max\" : 5.637376656633329, \"mean\" : 5.962133916683182 }, \"count\" : 0, \"limit\" : 6, \"items\" : [ { \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 0 }, { \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 0 } ] }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -141,7 +141,7 @@ public interface ClientsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 3 }";
+                    String exampleString = "{ \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 0 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
@@ -173,7 +173,7 @@ public interface ClientsApiDelegate {
         getRequest().ifPresent(request -> {
             for (MediaType mediaType: MediaType.parseMediaTypes(request.getHeader("Accept"))) {
                 if (mediaType.isCompatibleWith(MediaType.valueOf("application/json"))) {
-                    String exampleString = "{ \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 3 }";
+                    String exampleString = "{ \"firstName\" : \"firstName\", \"lastName\" : \"lastName\", \"id\" : 9, \"birthDate\" : \"2000-01-23\", \"age\" : 0 }";
                     ApiUtil.setExampleResponse(request, "application/json", exampleString);
                     break;
                 }
