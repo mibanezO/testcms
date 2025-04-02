@@ -13,8 +13,11 @@ Build tool:
 Uses:
 - Spring Security
 - Spring JPA
+- Spring Web
 - Openapi
 - Swagger UI
+- Flyway
+
 
 To execute locally, a docker-compose.yml file is provided. The file can be executed with the command:
 
